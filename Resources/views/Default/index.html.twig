@@ -23,6 +23,7 @@
         h2 {
             font-size: 21px;
             margin-bottom: 1em;
+            text-align: center;
         }
 
         p {
@@ -141,6 +142,12 @@
                     {% endfor %}
                 {% endfor %}
             </p>
+
+            {% if last_url is defined and last_url is not empty %}
+                <h2>
+                    <a href="{{ last_url }}">Volver a la página anterior</a>
+                </h2>
+            {% endif %}
 
             <p class="actions">
                 <a href="{{ path('manuel_dev_access_start_access') }}">Iniciar Acceso</a>
