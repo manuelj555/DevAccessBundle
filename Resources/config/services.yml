@@ -4,3 +4,13 @@ services:
         arguments:
             - '@filesystem'
             - ''
+
+    manuel.dev_access.security.listener.active_session_listener:
+        class: Manuel\Bundle\DevAccessBundle\Security\Listener\ActiveSessionListener
+        arguments:
+            - '@manuel.dev_access.security.access_config'
+            - '%kernel.debug%'
+            - '%kernel.environment%'
+            - ''
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, priority: -100 }

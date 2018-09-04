@@ -17,9 +17,9 @@ class Access
 {
     public static function check($path)
     {
-//        if (in_array(@$_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'], true) || PHP_SAPI === 'cli-server') {
-//            return;
-//        }
+        if (in_array(@$_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'], true) || PHP_SAPI === 'cli-server') {
+            return;
+        }
 
         self::checkPublicAccess($path);
     }

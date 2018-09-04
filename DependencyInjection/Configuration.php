@@ -31,6 +31,7 @@ class Configuration implements ConfigurationInterface
                 ->prototype('scalar')->end()
             ->end()
             ->scalarNode('sessions_path')->defaultValue('%kernel.cache_dir%/../')->end()
+            ->scalarNode('environment')->defaultValue('dev')->end()
             ->end();
 
 

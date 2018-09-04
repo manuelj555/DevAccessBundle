@@ -30,5 +30,8 @@ class DevAccessExtension extends Extension
 
         $container->findDefinition('manuel.dev_access.security.access_config')
             ->replaceArgument(1, $config['sessions_path']);
+
+        $container->findDefinition('manuel.dev_access.security.listener.active_session_listener')
+            ->replaceArgument(3, $config['environment']);
     }
 }
