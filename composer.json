@@ -1,0 +1,20 @@
+{
+    "name": "manuelj555/dev-access-bundle",
+    "description": "Agregar seguridad al usar app_dev.php",
+    "type": "library, bundle, symfony",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "manuelj555",
+            "email": "programador.manuel@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Manuel\\Bundle\\DevAccessBundle\\": ""}
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
+    }
+}
