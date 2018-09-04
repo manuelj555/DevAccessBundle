@@ -20,9 +20,19 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('dev_access');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $rootNode
+            ->children()
+                ->arrayNode('roles')
+                    ->cannotBeEmpty()
+                    ->defaultValue(['ROLE_SUPER_ADMIN'])
+                    ->prototype('scalar')->end()
+                ->end()
+            ->arrayNode('users')
+                ->prototype('scalar')->end()
+            ->end()
+            ->scalarNode('sessions_path')->defaultValue('%kernel.cache_dir%/../')->end()
+            ->end();
+
 
         return $treeBuilder;
     }

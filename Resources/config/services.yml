@@ -3,4 +3,4 @@ services:
         class: Manuel\Bundle\DevAccessBundle\Security\AccessConfig
         arguments:
             - '@filesystem'
-            - 'E:\\www\\dev_seguridad\\var\\cache'
+            - ''
