@@ -1,7 +1,7 @@
 {
     "name": "manuelj555/dev-access-bundle",
     "description": "Agregar seguridad al usar app_dev.php",
-    "type": "symfony bundle",
+    "type": "SymfonyBundle",
     "license": "MIT",
     "authors": [
         {
