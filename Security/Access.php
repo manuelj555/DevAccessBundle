@@ -50,8 +50,9 @@ class Access
     {
         $ip = @$_SERVER['REMOTE_ADDR'];
         $clientInfo = @$_SERVER['HTTP_USER_AGENT'];
+        $scriptName = dirname(@$_SERVER['SCRIPT_NAME']);
 
-        $filename = hash('sha256', sha1($ip).$clientInfo.__DIR__);
+        return hash('sha256', sha1($ip).$clientInfo.$scriptName);
 
         return $filename;
     }

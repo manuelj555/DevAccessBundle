@@ -1,4 +1,6 @@
 services:
-#    dev_access.example:
-#        class: Manuel\Bundle\DevAccessBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    manuel.dev_access.security.access_config:
+        class: Manuel\Bundle\DevAccessBundle\Security\AccessConfig
+        arguments:
+            - '@filesystem'
+            - 'E:\\www\\dev_seguridad\\var\\cache'

@@ -1,1 +1,155 @@
-Hello World!
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dev Access Bundle</title>
+    <style>
+        body {
+            background: #F5F5F5;
+            font: 18px/1.5 sans-serif;
+        }
+
+        h1, h2 {
+            line-height: 1.2;
+            margin: 0 0 .5em;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        h2 {
+            font-size: 21px;
+            margin-bottom: 1em;
+        }
+
+        p {
+            margin: 0 0 1em 0;
+        }
+
+        code {
+            background: #F5F5F5;
+            max-width: 100px;
+            padding: 2px 6px;
+            word-wrap: break-word;
+        }
+
+        #wrapper {
+            background: #FFF;
+            margin: 1em auto;
+            max-width: 800px;
+            width: 95%;
+        }
+
+        #container {
+            padding: 2em;
+        }
+
+        #welcome, #status {
+            margin-bottom: 2em;
+        }
+
+        #welcome h1 span {
+            display: block;
+            font-size: 75%;
+        }
+
+        #icon-status, #icon-book {
+            float: left;
+            height: 64px;
+            margin-right: 1em;
+            margin-top: -4px;
+            width: 64px;
+        }
+
+        #icon-book {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            #wrapper {
+                width: 80%;
+                margin: 2em auto;
+            }
+
+            #icon-book {
+                display: inline-block;
+            }
+
+            @-webkit-keyframes fade-in {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+            @keyframes fade-in {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+            .sf-toolbar {
+                opacity: 0;
+                -webkit-animation: fade-in 1s .2s forwards;
+                animation: fade-in 1s .2s forwards;
+            }
+        }
+
+        .actions {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .actions a {
+            display: inline;
+            padding: 5px 10px;
+            border: 1px solid #565656;
+            text-decoration: none;
+            background-color: #868686;
+            color: white;
+            margin: 5px;
+            box-shadow: 2px 2px #868686;
+        }
+        .flash-success {
+            padding: 6px;
+            background: #66ff52;
+            border: 1px solid #33842e;
+        }
+    </style>
+</head>
+<body>
+
+<div id="wrapper">
+    <div id="container">
+        <div id="welcome">
+            <h1>Administración de Acceso (app_dev.php)</h1>
+        </div>
+
+        <div id="status">
+            <p>
+                {% for type, flash_messages in app.session.flashBag.all %}
+                    {% for flash_message in flash_messages %}
+                        <div class="flash-{{ type }}">
+                            {{ flash_message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </p>
+
+            <p class="actions">
+                <a href="{{ path('manuel_dev_access_start_access') }}">Iniciar Acceso</a>
+                <a href="{{ path('manuel_dev_access_finish_access') }}">Finalizar Acceso</a>
+                <a href="{{ path('manuel_dev_access_finish_all_access') }}">Finalizar Acceso a todas las sesiones</a>
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
