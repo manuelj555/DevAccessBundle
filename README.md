@@ -10,7 +10,7 @@ Instalación
 
 Ejecutar
 
-    composer require manuelj555/dev-access-bundle 0.1@dev
+    composer require manuelj555/dev-access-bundle ~0.1@dev
   
 Registrar el Bundle en el AppKernel:
 
@@ -66,3 +66,22 @@ Para administrar los accesos se debe acceder a:
 
     /admin/dev-access/config
   
+Configuración adicional
+----
+
+
+```yaml
+dev_access:
+    roles:       # Roles con acceso al modulo de administracion
+        - ROLE_ADMIN
+    users:   # Usuarios especificos con acceso al modulo de administracion
+        - admin
+    sessions_path: '%kernel.project_dir%/var/'   # Ruta donde se van a generar los archivos de sesion
+    environment: dev         # entorno en el que se está trabajando con acceso restringido
+``` 
+
+Importante
+===
+
+En el app_dev.php al añadir la linea `Manuel\Bundle\DevAccessBundle\Security\Access::check(__DIR__.'/var/cache');` la ruta pasada como argumento debe ser la misma que la colocada en la configuracion del bundle.
+    
