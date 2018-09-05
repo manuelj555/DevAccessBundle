@@ -36,7 +36,7 @@ dev_access:
     prefix:   /admin
 ``` 
 
-Y por último agregar ajustar el archivo app_dev.php de la siguiente manera:
+Y por último ajustar el archivo app_dev.php de la siguiente manera:
 
 ```php
 ...
@@ -49,7 +49,7 @@ Y por último agregar ajustar el archivo app_dev.php de la siguiente manera:
 //    exit('You are not allowed to access this file. Check '.basename(__FILE__).' for more information.');
 //}
 
-// y ahgregar debajo de la carga del autoload lo siguiente:
+// y agregar debajo de la carga del autoload lo siguiente:
 require __DIR__.'/../vendor/autoload.php';
 Manuel\Bundle\DevAccessBundle\Security\Access::check(__DIR__.'/var/cache'); // Agregar esta linea
 
@@ -76,7 +76,7 @@ dev_access:
         - ROLE_ADMIN
     users:   # Usuarios especificos con acceso al modulo de administracion
         - admin
-    sessions_path: '%kernel.project_dir%/var/'   # Ruta donde se van a generar los archivos de sesion
+    sessions_path: '%kernel.project_dir%/var/cache'   # Ruta donde se van a generar los archivos de sesion
     environment: dev         # entorno en el que se está trabajando con acceso restringido
 ``` 
 
