@@ -3,6 +3,7 @@
 namespace Manuel\Bundle\DevAccessBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGenerator;
@@ -11,6 +12,7 @@ use Symfony\Component\Routing\Generator\UrlGenerator;
  * @author Manuel Aguirre <programador.manuel@gmail.com>
  *
  * @Route("/dev-access")
+ * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
  */
 class DefaultController extends Controller
 {
@@ -66,7 +68,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/config", name="manuel_dev_access_config")
+     * @Route("/", name="manuel_dev_access_config")
      */
     public function configAction(Request $request)
     {
@@ -80,7 +82,14 @@ class DefaultController extends Controller
     private function checkRoles()
     {
         $accessRoles = $this->getParameter('manuel.dev_access.security.roles');
-        array_walk($accessRoles, [$this, 'denyAccessUnlessGranted']);
+
+        foreach ($accessRoles as $role) {
+            if ($this->isGranted($role)) {
+                return;
+            }
+        }
+
+        throw $this->createAccessDeniedException('Access Denied.');
     }
 
     /**
